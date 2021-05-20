@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Savings account:</strong>
+  <%= @money_transaction.savings_account_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @money_transaction.date %>
+</p>
+
+<p>
+  <strong>Direction:</strong>
+  <%= @money_transaction.direction %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @money_transaction.amount %>
+</p>
+
+<%= link_to 'Edit', edit_money_transaction_path(@money_transaction) %> |
+<%= link_to 'Back', money_transactions_path %>

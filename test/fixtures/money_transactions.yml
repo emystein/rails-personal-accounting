@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  savings_account: one
+  date: 2021-05-17 09:13:50
+  direction: MyString
+  amount: 1
+
+two:
+  savings_account: two
+  date: 2021-05-17 09:13:50
+  direction: MyString
+  amount: 1

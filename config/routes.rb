@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :money_transactions
   resources :savings_accounts
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  get '/user' => 'user#show'
+  get '/user/new-savings-account' => 'user#new_savings_account'
+  post '/user/create-savings-account' => 'user#create_savings_account'
+
+  root :to => "user#show"
 end

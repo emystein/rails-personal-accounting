@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_05_17_121549) do
     t.index ["user_id"], name: "index_savings_accounts_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "user", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -45,5 +45,5 @@ ActiveRecord::Schema.define(version: 2021_05_17_121549) do
   end
 
   add_foreign_key "money_transactions", "savings_accounts"
-  add_foreign_key "savings_accounts", "users"
+  add_foreign_key "savings_accounts", "user"
 end
