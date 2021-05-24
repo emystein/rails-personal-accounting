@@ -1,14 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @savings_account.user_id %>
-</p>
-
-<p>
   <strong>Currency:</strong>
   <%= @savings_account.currency %>
 </p>
 
-<%= link_to 'Edit', edit_savings_account_path(@savings_account) %> |
-<%= link_to 'Back', savings_accounts_path %>
+<%= render 'money_transactions/list', money_transactions: @savings_account.money_transactions %>

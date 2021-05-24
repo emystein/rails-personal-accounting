@@ -1,0 +1,8 @@
+<h1>New Withdrawal</h1>
+
+<%= form_with(url: withdraw_url, method: :post) do |form| %>
+  <%= form.label :amount %>
+  <%= form.number_field :amount %>
+  <br/>
+  <%= form.submit %>
+<% end %>

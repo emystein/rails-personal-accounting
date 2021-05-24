@@ -56,6 +56,28 @@ class SavingsAccountsController < ApplicationController
     end
   end
 
+  def new_deposit
+
+  end
+
+  def deposit
+    @savings_account = SavingsAccount.find(params[:id])
+    @savings_account.money_transactions.new(direction: 'deposit', amount: params[:amount])
+    @savings_account.save
+    redirect_to @savings_account, notice: 'Money has been deposited.'
+  end
+
+  def new_withdrawal
+
+  end
+
+  def withdraw
+    @savings_account = SavingsAccount.find(params[:id])
+    @savings_account.money_transactions.new(direction: 'withdrawal', amount: params[:amount])
+    @savings_account.save
+    redirect_to @savings_account, notice: 'Money has been withdrawn.'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_savings_account

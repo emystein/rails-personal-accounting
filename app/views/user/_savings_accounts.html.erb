@@ -3,7 +3,6 @@
 <table>
   <thead>
   <tr>
-    <th>User</th>
     <th>Currency</th>
     <th colspan="3"></th>
   </tr>
@@ -12,11 +11,10 @@
   <tbody>
   <% @savings_accounts.each do |savings_account| %>
     <tr>
-      <td><%= savings_account.user_id %></td>
       <td><%= savings_account.currency %></td>
-      <td><%= link_to 'Show', savings_account %></td>
-      <td><%= link_to 'Edit', edit_savings_account_path(savings_account) %></td>
-      <td><%= link_to 'Destroy', savings_account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= link_to 'Deposit', new_deposit_path(savings_account) %></td>
+      <td><%= link_to 'Withdraw', new_withdrawal_path(savings_account) %></td>
+      <td><%= link_to 'History', savings_account %></td>
     </tr>
   <% end %>
   </tbody>
