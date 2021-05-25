@@ -4,7 +4,7 @@ class CreateMoneyTransactions < ActiveRecord::Migration[6.1]
       t.references :savings_account, null: false, foreign_key: true
       t.string :direction
       t.integer :amount
-      t.string :notes
+      t.string :description
 
       t.timestamps
     end

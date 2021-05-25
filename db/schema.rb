@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2021_05_17_121549) do
     t.integer "savings_account_id", null: false
     t.string "direction"
     t.integer "amount"
-    t.string "notes"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["savings_account_id"], name: "index_money_transactions_on_savings_account_id"
