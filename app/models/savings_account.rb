@@ -7,12 +7,12 @@ class SavingsAccount < ApplicationRecord
   end
 
   def credit(amount)
-    self.money_transactions.new(direction: 'deposit', amount: amount)
-    self.save
+    money_transactions.new(amount: amount)
+    save
   end
 
   def debit(amount)
-    self.money_transactions.new(direction: 'withdrawal', amount: - amount.to_i)
-    self.save
+    money_transactions.new(amount: - amount.to_i)
+    save
   end
 end

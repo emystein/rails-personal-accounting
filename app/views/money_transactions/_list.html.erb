@@ -2,7 +2,6 @@
   <thead>
   <tr>
     <th>Date</th>
-    <th>Direction</th>
     <th>Amount</th>
     <th>Description</th>
   </tr>
@@ -12,7 +11,6 @@
   <% money_transactions.each do |money_transaction| %>
     <tr>
       <td><%= money_transaction.created_at %></td>
-      <td><%= money_transaction.direction %></td>
       <td><%= money_transaction.amount %></td>
       <td><%= money_transaction.description %></td>
     </tr>

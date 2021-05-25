@@ -2,10 +2,8 @@
 
 one:
   savings_account: one
-  direction: MyString
   amount: 1
 
 two:
   savings_account: two
-  direction: MyString
   amount: 1

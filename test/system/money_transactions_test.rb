@@ -15,7 +15,6 @@ class MoneyTransactionsTest < ApplicationSystemTestCase
     click_on "New Money Transaction"
 
     fill_in "Amount", with: @money_transaction.amount
-    fill_in "Direction", with: @money_transaction.direction
     fill_in "Savings account", with: @money_transaction.savings_account_id
     click_on "Create Money transaction"
 
