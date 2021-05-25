@@ -37,12 +37,4 @@ class SavingsAccountsControllerTest < ActionDispatch::IntegrationTest
     patch savings_account_url(@savings_account), params: { savings_account: { currency: @savings_account.currency, user_id: @savings_account.user_id } }
     assert_redirected_to savings_account_url(@savings_account)
   end
-
-  test "should destroy savings_account" do
-    assert_difference('SavingsAccount.count', -1) do
-      delete savings_account_url(@savings_account)
-    end
-
-    assert_redirected_to savings_accounts_url
-  end
 end

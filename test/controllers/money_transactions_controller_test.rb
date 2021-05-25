@@ -17,7 +17,7 @@ class MoneyTransactionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create money_transaction" do
     assert_difference('MoneyTransaction.count') do
-      post money_transactions_url, params: { money_transaction: { amount: @money_transaction.amount, date: @money_transaction.date, direction: @money_transaction.direction, savings_account_id: @money_transaction.savings_account_id } }
+      post money_transactions_url, params: { money_transaction: { amount: @money_transaction.amount, direction: @money_transaction.direction, savings_account_id: @money_transaction.savings_account_id } }
     end
 
     assert_redirected_to money_transaction_url(MoneyTransaction.last)
@@ -34,7 +34,7 @@ class MoneyTransactionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update money_transaction" do
-    patch money_transaction_url(@money_transaction), params: { money_transaction: { amount: @money_transaction.amount, date: @money_transaction.date, direction: @money_transaction.direction, savings_account_id: @money_transaction.savings_account_id } }
+    patch money_transaction_url(@money_transaction), params: { money_transaction: { amount: @money_transaction.amount, direction: @money_transaction.direction, savings_account_id: @money_transaction.savings_account_id } }
     assert_redirected_to money_transaction_url(@money_transaction)
   end
 
