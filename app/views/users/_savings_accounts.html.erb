@@ -12,8 +12,8 @@
   <% @savings_accounts.each do |savings_account| %>
     <tr>
       <td><%= savings_account.currency %></td>
-      <td><%= link_to 'Deposit', new_deposit_path(savings_account) %></td>
-      <td><%= link_to 'Withdraw', new_withdrawal_path(savings_account) %></td>
+      <td><%= link_to 'Deposit', new_deposit_savings_account_url(savings_account) %></td>
+      <td><%= link_to 'Withdraw', new_withdrawal_savings_account_url(savings_account) %></td>
       <td><%= link_to 'History', savings_account %></td>
     </tr>
   <% end %>

@@ -1,12 +1,8 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
     @savings_accounts = current_user.savings_accounts
-  end
-
-  def new_savings_account
-
   end
 
   def create_savings_account
