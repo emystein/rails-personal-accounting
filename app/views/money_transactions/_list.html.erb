@@ -1,7 +1,6 @@
 <table>
   <thead>
   <tr>
-    <th>Savings account</th>
     <th>Date</th>
     <th>Direction</th>
     <th>Amount</th>
@@ -11,7 +10,6 @@
   <tbody>
   <% money_transactions.each do |money_transaction| %>
     <tr>
-      <td><%= money_transaction.savings_account_id %></td>
       <td><%= money_transaction.created_at %></td>
       <td><%= money_transaction.direction %></td>
       <td><%= money_transaction.amount %></td>
