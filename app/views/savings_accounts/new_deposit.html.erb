@@ -3,6 +3,8 @@
 <%= form_with(url: deposit_savings_account_url, method: :post) do |form| %>
   <%= form.label :amount %>
   <%= form.number_field :amount %>
+  <%= form.label :description %>
+  <%= form.text_field :description %>
   <br/>
   <%= form.submit %>
 <% end %>
