@@ -7,19 +7,24 @@ class SavingsAccountTest < ActiveSupport::TestCase
     assert account.balance == 0
   end
 
-  test 'deposit 10 should increase balance by 10' do
+  test 'credit 10 should increase balance by 10' do
     account = SavingsAccount.new
-    account.money_transactions.new(direction: 'deposit', amount: 10)
-    account.save
+    account.credit(10)
 
     assert account.balance == 10
   end
 
-  test 'withdraw 10 should decrease balance by 10' do
+  test 'debit 10 should decrease balance by 10' do
     account = SavingsAccount.new
-    account.money_transactions.new(direction: 'deposit', amount: 10)
-    account.money_transactions.new(direction: 'withdrawal', amount: 10)
-    account.save
+    account.debit(10)
+
+    assert account.balance == -10
+  end
+
+  test 'credit 10 debit 10 should set balance to 0' do
+    account = SavingsAccount.new
+    account.credit(10)
+    account.debit(10)
 
     assert account.balance == 0
   end

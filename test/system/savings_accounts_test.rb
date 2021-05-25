@@ -19,7 +19,6 @@ class SavingsAccountsTest < ApplicationSystemTestCase
     click_on "Create Savings account"
 
     assert_text "Savings account was successfully created"
-    click_on "Back"
   end
 
   test "updating a Savings account" do
@@ -31,15 +30,5 @@ class SavingsAccountsTest < ApplicationSystemTestCase
     click_on "Update Savings account"
 
     assert_text "Savings account was successfully updated"
-    click_on "Back"
-  end
-
-  test "destroying a Savings account" do
-    visit savings_accounts_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
-
-    assert_text "Savings account was successfully destroyed"
   end
 end
