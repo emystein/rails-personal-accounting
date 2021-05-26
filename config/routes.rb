@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
-  resources :money_transactions
+  resources :money_transactions, except: %i[edit update destroy]
 
   resources :savings_accounts do
     member do
