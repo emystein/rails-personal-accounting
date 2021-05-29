@@ -12,9 +12,9 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/user' => 'users#show'
+  get '/user' => 'users#show', as: :profile
   get '/user/new_savings_account' => 'users#new_savings_account'
   post '/user/create_savings_account' => 'users#create_savings_account'
 
-  root :to => "users#show"
+  root to: 'users#show'
 end

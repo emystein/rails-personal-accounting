@@ -1,10 +1,10 @@
-<h1>New Deposit</h1>
+<div class="container form-sm">
+  <h2>New Deposit</h2>
 
-<%= form_with(url: deposit_savings_account_url, method: :post) do |form| %>
-  <%= form.label :amount %>
-  <%= form.number_field :amount %>
-  <%= form.label :description %>
-  <%= form.text_field :description %>
-  <br/>
-  <%= form.submit %>
-<% end %>
+  <%= bootstrap_form_with(url: deposit_savings_account_url, method: :post) do |form| %>
+    <%= form.number_field :amount %>
+    <%= form.text_field :description, class: 'mb-3'%>
+    <%= form.submit 'Deposit', class: 'btn btn-lg btn-primary w-100 mb-2' %>
+    <%= link_to 'Back', :back, class: 'btn btn-lg btn-secondary w-100' %>
+  <% end %>
+</div>
