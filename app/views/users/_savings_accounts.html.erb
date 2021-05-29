@@ -1,27 +1,25 @@
-<div class="container">
-  <h2>Savings Accounts</h2>
+<h2>Savings Accounts</h2>
 
-  <table class="table table-striped width-md">
-    <thead class="thead-dark">
+<table class="table table-striped width-md">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Currency</th>
+    <th scope="col">Balance</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @savings_accounts.each do |savings_account| %>
     <tr>
-      <th scope="col">Currency</th>
-      <th scope="col">Balance</th>
-      <th scope="col"></th>
+      <td scope="row" class="align-middle"><%= savings_account.currency %></td>
+      <td scope="row" class="align-middle"><%= savings_account.balance %></td>
+      <td scope="row" class="align-middle">
+        <%= link_to 'Deposit', new_deposit_savings_account_url(savings_account), class: 'btn btn-primary' %>
+        <%= link_to 'Withdraw', new_withdrawal_savings_account_url(savings_account), class: 'btn btn-primary' %>
+        <%= link_to 'History', savings_account, class: 'btn btn-primary' %>
+      </td>
     </tr>
-    </thead>
-
-    <tbody>
-    <% @savings_accounts.each do |savings_account| %>
-      <tr>
-        <td scope="row" class="align-middle"><%= savings_account.currency%></td>
-        <td scope="row" class="align-middle"><%= savings_account.balance %></td>
-        <td scope="row" class="align-middle">
-          <%= link_to 'Deposit', new_deposit_savings_account_url(savings_account), class: 'btn btn-primary' %>
-          <%= link_to 'Withdraw', new_withdrawal_savings_account_url(savings_account), class: 'btn btn-primary' %>
-          <%= link_to 'History', savings_account, class: 'btn btn-primary' %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-</div>
+  <% end %>
+  </tbody>
+</table>
