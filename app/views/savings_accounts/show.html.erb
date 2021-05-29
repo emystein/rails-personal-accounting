@@ -1,8 +1,7 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <h2>Savings Account: <%= @savings_account.currency %></h2>
 
-<p>
-  <strong>Currency:</strong>
-  <%= @savings_account.currency %>
-</p>
+  <%= render 'money_transactions/list', money_transactions: @savings_account.money_transactions %>
 
-<%= render 'money_transactions/list', money_transactions: @savings_account.money_transactions %>
+  <%= link_to 'Back to Profile', :profile, class: 'btn btn-secondary' %>
+</div>
