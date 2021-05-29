@@ -11,25 +11,23 @@
 </head>
 
 <body>
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/">Bank</a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to('Logout', destroy_user_session_path, class: "nav-link", method: :delete) %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to 'Log in', profile_path, class: "nav-link nav-link-important" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+    <ul class="navbar-nav">
+      <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to('Logout', destroy_user_session_path, class: "nav-link", method: :delete) %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to 'Log in', profile_path, class: "nav-link nav-link-important" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </nav>
 <main class="container-fluid">

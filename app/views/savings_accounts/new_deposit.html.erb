@@ -5,6 +5,11 @@
     <%= form.number_field :amount %>
     <%= form.text_field :description, class: 'mb-3'%>
     <%= form.submit 'Deposit', class: 'btn btn-lg btn-primary w-100 mb-2' %>
-    <%= link_to 'Back', :back, class: 'btn btn-lg btn-secondary w-100' %>
+    <%= link_to 'Back', :back, class: 'btn btn-secondary w-100' %>
   <% end %>
 </div>
+
+<script>
+    document.getElementById('amount').focus();
+</script>
+
