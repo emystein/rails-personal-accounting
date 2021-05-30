@@ -1,5 +1,5 @@
 <h2>Savings Account: <%= @savings_account.currency %></h2>
 
-<%= render 'money_transactions/list', money_transactions: @savings_account.money_transactions %>
+<%= render 'money_transactions/list', money_transactions: @savings_account.money_transactions.order_desc %>
 
 <%= link_to 'Back to Profile', :profile, class: 'btn btn-secondary' %>
