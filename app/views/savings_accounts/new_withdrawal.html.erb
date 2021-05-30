@@ -1,14 +1,1 @@
-<div class="container form-sm">
-  <h2>New Withdrawal</h2>
-
-  <%= bootstrap_form_with(url: withdraw_savings_account_url, method: :post) do |form| %>
-    <%= form.number_field :amount %>
-    <%= form.text_field :description, class: 'mb-3' %>
-    <%= form.submit 'Withdraw', class: 'btn btn-lg btn-primary w-100 mb-2' %>
-    <%= link_to 'Back', :back, class: 'btn btn-secondary w-100' %>
-  <% end %>
-</div>
-
-<script>
-    document.getElementById('amount').focus();
-</script>
+<%= render 'new_transaction', name: 'Withdraw', url: withdraw_savings_account_url  %>
