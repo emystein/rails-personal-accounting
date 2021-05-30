@@ -8,6 +8,9 @@ class SavingsAccountsController < ApplicationController
 
   # GET /savings_accounts/1 or /savings_accounts/1.json
   def show
+    page = params[:page] ||= 1
+
+    @money_transactions = @savings_account.money_transactions.order_desc.page(page).per(10)
   end
 
   # GET /savings_accounts/new
@@ -67,6 +70,7 @@ class SavingsAccountsController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_savings_account
     @savings_account = SavingsAccount.find(params[:id])

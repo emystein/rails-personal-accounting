@@ -1,0 +1,43 @@
+.pagination a, .pagination span.current, .pagination span.gap {
+  float: left;
+  padding: 0 14px 0 14px;
+  line-height: 38px;
+  text-decoration: none;
+  border: 1px solid #DDDDDD;
+  border-left-width: 0;
+}
+
+.pagination {
+  border-left: 1px solid #DDDDDD;
+  margin-bottom: 0.5rem;
+
+  .first {
+    padding: 0;
+    float: none;
+    border: none;
+  }
+
+  .prev {
+    padding: 0;
+    float: none;
+    border: none;
+  }
+
+  .page {
+    padding: 0;
+    float: none;
+    border: none;
+  }
+
+  .next {
+    padding: 0;
+    float: none;
+    border: none;
+  }
+
+  .last {
+    padding: 0;
+    float: none;
+    border: none;
+  }
+}

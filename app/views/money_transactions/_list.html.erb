@@ -8,11 +8,11 @@
   </thead>
 
   <tbody>
-  <% money_transactions.each do |money_transaction| %>
+  <% transactions.each do |transaction| %>
     <tr>
-      <td><%= money_transaction.created_at.strftime("%F %T") %></td>
-      <td><%= money_transaction.amount %></td>
-      <td><%= money_transaction.description %></td>
+      <td><%= transaction.created_at.strftime("%F %T") %></td>
+      <td><%= transaction.amount %></td>
+      <td><%= transaction.description %></td>
     </tr>
   <% end %>
   </tbody>
