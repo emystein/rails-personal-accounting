@@ -1,6 +1,8 @@
 <h2>Savings Account: <%= @savings_account.currency %></h2>
 
-<%= render 'money_transactions/list', transactions: @money_transactions %>
+<div class="list-height">
+  <%= render 'money_transactions/list', transactions: @money_transactions %>
+</div>
 
 <%= paginate @money_transactions %>
 
