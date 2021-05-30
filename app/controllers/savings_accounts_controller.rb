@@ -1,5 +1,5 @@
 class SavingsAccountsController < ApplicationController
-  before_action :set_savings_account, only: %i[ show edit update destroy ]
+  before_action :set_savings_account, only: %i[ show edit update destroy deposit withdraw ]
 
   # GET /savings_accounts or /savings_accounts.json
   def index
@@ -57,25 +57,23 @@ class SavingsAccountsController < ApplicationController
   end
 
   def deposit
-    @savings_account = SavingsAccount.find(params[:id])
     @savings_account.credit(params[:amount])
-    redirect_to @savings_account, notice: 'Money has been deposited.'
+    redirect_to :profile
   end
 
   def withdraw
-    @savings_account = SavingsAccount.find(params[:id])
     @savings_account.debit(params[:amount])
-    redirect_to @savings_account, notice: 'Money has been withdrawn.'
+    redirect_to :profile
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_savings_account
-      @savings_account = SavingsAccount.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_savings_account
+    @savings_account = SavingsAccount.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def savings_account_params
-      params.require(:savings_account).permit(:user_id, :currency)
-    end
+  # Only allow a list of trusted parameters through.
+  def savings_account_params
+    params.require(:savings_account).permit(:user_id, :currency)
+  end
 end
