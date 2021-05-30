@@ -10,7 +10,7 @@
   <tbody>
   <% money_transactions.each do |money_transaction| %>
     <tr>
-      <td><%= money_transaction.created_at.in_time_zone('America/Buenos_Aires').strftime("%F %T") %></td>
+      <td><%= money_transaction.created_at.strftime("%F %T") %></td>
       <td><%= money_transaction.amount %></td>
       <td><%= money_transaction.description %></td>
     </tr>
