@@ -1,8 +1,16 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+user1_ars_account:
   user: one
-  currency: MyString
+  currency: ARS
+
+user1_usd_account:
+  user: one
+  currency: USD
+
+user1_eur_account:
+  user: one
+  currency: EUR
 
 two:
   user: two

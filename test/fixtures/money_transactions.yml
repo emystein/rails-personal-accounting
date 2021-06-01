@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  savings_account: one
+  savings_account: user1_eur_account
   amount: 1
 
 two:

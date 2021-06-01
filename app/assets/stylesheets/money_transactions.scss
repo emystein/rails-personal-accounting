@@ -1,3 +1,11 @@
 // Place all the styles related to the MoneyTransactions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.positive-amount {
+  color: green;
+}
+
+.negative-amount {
+  color: red;
+}

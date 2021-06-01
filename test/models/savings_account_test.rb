@@ -44,4 +44,15 @@ class SavingsAccountTest < ActiveSupport::TestCase
       account.debit(-10)
     end
   end
+
+  test 'buy currency' do
+    usd_account = savings_accounts(:user1_usd_account)
+    usd_account.credit(100)
+
+    ars_account = savings_accounts(:user1_ars_account)
+    ars_account.exchange('USD', 100, 100)
+
+    assert_equal 10_000, ars_account.balance
+    assert_equal 0, usd_account.balance
+  end
 end
