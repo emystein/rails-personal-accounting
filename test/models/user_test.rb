@@ -1,7 +1,17 @@
-require "test_helper"
+require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test 'exchange currency' do
+    user = users(:one)
+
+    usd_account = user.account_for_currency('USD')
+    usd_account.credit(100)
+
+    ars_account = user.account_for_currency('ARS')
+
+    user.exchange_currency('USD', 100, 'ARS', ExchangeRate.new('USD', 'ARS', 100))
+
+    assert_equal 10_000, ars_account.balance
+    assert_equal 0, usd_account.balance
+  end
 end

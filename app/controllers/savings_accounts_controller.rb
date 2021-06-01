@@ -1,5 +1,5 @@
 class SavingsAccountsController < ApplicationController
-  before_action :set_savings_account, only: %i[ show edit update destroy deposit withdraw exchange_money]
+  before_action :set_savings_account, only: %i[ show edit update destroy deposit withdraw exchange_currency]
 
   # GET /savings_accounts or /savings_accounts.json
   def index
@@ -66,11 +66,6 @@ class SavingsAccountsController < ApplicationController
 
   def withdraw
     @savings_account.debit(params[:amount])
-    redirect_to :profile
-  end
-
-  def exchange_money
-    @savings_account.exchange(params[:source_currency], params[:amount_in_source_currency], params[:to_target_exchange_rate])
     redirect_to :profile
   end
 
