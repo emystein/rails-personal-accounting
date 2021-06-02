@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   get '/user' => 'users#show', as: :profile
   get '/user/new_savings_account' => 'users#new_savings_account'
   post '/user/create_savings_account' => 'users#create_savings_account'
-  post '/user/exchange_currency' => 'users#exchange_currency'
+
+  get '/user/new_exchange_currency' => 'users#new_exchange_currency'
+  post '/user/create_exchange_currency' => 'users#create_exchange_currency'
 
   root to: 'users#show'
 end

@@ -19,9 +19,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     post '/user/exchange_currency', params: {
       source_currency: 'USD',
-      amount_in_source_currency: 100,
+      source_amount: 100,
       destination_currency: 'ARS',
-      exchange_rate_to_destination: 100
+      exchange_rate: 100
     }
 
     assert_equal 10_000, ars_account.balance

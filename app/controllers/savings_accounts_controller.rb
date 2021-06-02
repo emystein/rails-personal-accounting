@@ -1,5 +1,5 @@
 class SavingsAccountsController < ApplicationController
-  before_action :set_savings_account, only: %i[ show edit update destroy deposit withdraw exchange_currency]
+  before_action :set_savings_account, only: %i[ show edit update destroy deposit withdraw]
 
   # GET /savings_accounts or /savings_accounts.json
   def index

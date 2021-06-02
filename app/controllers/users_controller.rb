@@ -8,18 +8,21 @@ class UsersController < ApplicationController
   def create_savings_account
     current_user.savings_accounts.create(currency: params[:currency])
 
-    redirect_to user_url
+    redirect_to :profile
   end
 
-  def exchange_currency
+  def new_exchange_currency
+
+  end
+
+  def create_exchange_currency
     source_currency = params[:source_currency]
     target_currency = params[:destination_currency]
-    exchange_rate_to_destination = params[:exchange_rate_to_destination]
 
     current_user.exchange_currency(source_currency,
-                                   params[:amount_in_source_currency],
+                                   params[:source_amount],
                                    target_currency,
-                                   ExchangeRate.new(source_currency, target_currency, exchange_rate_to_destination))
+                                   ExchangeRate.new(source_currency, target_currency, params[:exchange_rate]))
     redirect_to :profile
   end
 end

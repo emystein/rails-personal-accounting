@@ -7,9 +7,11 @@ class User < ApplicationRecord
   has_many :savings_accounts
 
   def exchange_currency(source_currency, source_amount, target_currency, exchange_ratio)
-    account_for_currency(source_currency).debit(source_amount)
+    account_for_currency(source_currency)
+      .debit(source_amount)
 
-    account_for_currency(target_currency).credit(exchange_ratio.convert(source_amount))
+    account_for_currency(target_currency)
+      .credit(exchange_ratio.convert(source_amount))
   end
 
   def account_for_currency(currency)

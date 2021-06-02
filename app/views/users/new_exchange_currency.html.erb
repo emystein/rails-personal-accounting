@@ -1,0 +1,15 @@
+<div class="container form-sm">
+  <h2>Exchange Currency:</h2>
+
+  <%= bootstrap_form_with(url: 'create_exchange_currency', method: :post) do |form| %>
+    <%= form.text_field :source_currency %>
+    <%= form.number_field :source_amount %>
+    <%= form.text_field :destination_currency %>
+    <%= form.number_field :exchange_rate, class: 'mb-3' %>
+    <%= form.submit 'Submit', class: 'btn btn-lg btn-primary w-100 mb-2'  %>
+  <% end %>
+</div>
+
+<script>
+    document.getElementById('source_currency').focus();
+</script>
