@@ -49,10 +49,12 @@ class SavingsAccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'withdraw' do
+    @savings_account.credit(20)
+
     post withdraw_savings_account_url(@savings_account), params: { savings_account: { currency: @savings_account.currency, user_id: @savings_account.user_id },
-                                                                   amount: 10,
+                                                                   amount: 15,
                                                                    description: 'a withdrawal' }
 
-    assert @savings_account.balance == -10
+    assert @savings_account.balance == 5
   end
 end

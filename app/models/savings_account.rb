@@ -15,7 +15,7 @@ class SavingsAccount < ApplicationRecord
   end
 
   def debit(amount)
-    raise RuntimeError unless amount.to_i.positive?
+    raise RuntimeError unless amount.to_i.positive? && amount.to_i <= balance
 
     money_transactions.new(amount: -amount.to_i)
 
