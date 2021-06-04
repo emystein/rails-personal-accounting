@@ -17,4 +17,8 @@ class User < ApplicationRecord
   def account_for_currency(currency)
     savings_accounts.find { |a| a.currency == currency }
   end
+
+  def account_currencies()
+    savings_accounts.map(&:currency)
+  end
 end

@@ -2,7 +2,7 @@ class ExchangeCurrenciesController < ApplicationController
   before_action :authenticate_user!
 
   def new
-
+    @currencies = current_user.account_currencies
   end
 
   def create
