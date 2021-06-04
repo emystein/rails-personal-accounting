@@ -1,7 +1,7 @@
 <div class="container form-sm">
   <h1>Exchange Currency:</h1>
 
-  <%= bootstrap_form_with(url: 'create_exchange_currency', method: :post) do |form| %>
+  <%= bootstrap_form_with(url: exchange_currencies_url, method: :post) do |form| %>
     <%= form.text_field :source_currency %>
     <%= form.number_field :source_amount %>
     <%= form.text_field :destination_currency %>

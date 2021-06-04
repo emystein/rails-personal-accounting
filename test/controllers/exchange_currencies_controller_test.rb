@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UsersControllerTest < ActionDispatch::IntegrationTest
+class ExchangeCurrenciesControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
@@ -11,13 +11,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     MoneyTransaction.delete_all
   end
 
-  test 'exchange currency' do
+  test 'exchange currencies' do
     usd_account = @user.account_for_currency('USD')
     usd_account.credit(100)
 
     ars_account = @user.account_for_currency('ARS')
 
-    post '/user/exchange_currency', params: {
+    post '/exchange_currencies', params: {
       source_currency: 'USD',
       source_amount: 100,
       destination_currency: 'ARS',

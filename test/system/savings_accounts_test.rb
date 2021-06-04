@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class SavingsAccountsTest < ApplicationSystemTestCase
   setup do
-    @savings_account = savings_accounts(:one)
+    @savings_account = savings_accounts(:user1_ars_account)
   end
 
   test "visiting the index" do

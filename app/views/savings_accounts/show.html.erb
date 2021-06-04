@@ -1,4 +1,6 @@
-<h2>Savings Account: <%= @savings_account.currency %></h2>
+<p id="notice"><%= notice %></p>
+
+<h1>Savings Account: <%= @savings_account.currency %></h1>
 
 <div class="list-height">
   <%= render 'money_transactions/list', transactions: @money_transactions %>
