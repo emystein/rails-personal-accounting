@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :savings_accounts
 
   def exchange_currency(source_currency, source_amount, target_currency, exchange_ratio)
+    raise RuntimeError unless target_currency != source_currency
+
     account_for_currency(source_currency)
       .debit(source_amount)
 

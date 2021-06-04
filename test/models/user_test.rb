@@ -14,4 +14,12 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 10_000, ars_account.balance
     assert_equal 0, usd_account.balance
   end
+
+  test 'reject exchange same currency' do
+    user = users(:one)
+
+    assert_raises RuntimeError do
+      user.exchange_currency('USD', 100, 'USD', ExchangeRate.new('USD', 'USD', 1))
+    end
+  end
 end
