@@ -45,7 +45,7 @@ class SavingsAccountsControllerTest < ActionDispatch::IntegrationTest
                                                                   amount: 10,
                                                                   description: 'a deposit' }
 
-    assert @savings_account.balance == 10
+    assert @savings_account.balance == Money.new(10, 'ARS')
   end
 
   test 'withdraw' do
@@ -55,6 +55,6 @@ class SavingsAccountsControllerTest < ActionDispatch::IntegrationTest
                                                                    amount: 15,
                                                                    description: 'a withdrawal' }
 
-    assert @savings_account.balance == 5
+    assert @savings_account.balance == Money.new(5, 'ARS')
   end
 end

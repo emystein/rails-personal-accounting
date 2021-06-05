@@ -1,23 +1,29 @@
+require 'money'
+
 class SavingsAccount < ApplicationRecord
   belongs_to :user
   has_many :money_transactions
 
   def balance
-    money_transactions.sum(&:amount)
+    Money.new(money_transactions.sum(&:amount), currency)
   end
 
   def credit(amount)
-    raise RuntimeError unless amount.to_i.positive?
+    amount = Money.new(amount, currency) unless amount.is_a?(Money)
 
-    money_transactions.new(amount: amount)
+    raise RuntimeError unless amount.positive?
+
+    money_transactions.new(amount: amount.cents)
 
     save
   end
 
   def debit(amount)
-    raise RuntimeError unless amount.to_i.positive? && amount.to_i <= balance
+    amount = Money.new(amount, currency) unless amount.is_a?(Money)
 
-    money_transactions.new(amount: -amount.to_i)
+    raise RuntimeError unless amount.positive? && amount <= balance
+
+    money_transactions.new(amount: -amount.cents)
 
     save
   end

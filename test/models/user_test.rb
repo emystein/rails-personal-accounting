@@ -12,8 +12,8 @@ class UserTest < ActiveSupport::TestCase
 
     user.exchange_currency(Money.us_dollar(100), 'ARS', ExchangeRate.new('USD', 'ARS', 100))
 
-    assert_equal 10_000, ars_account.balance
-    assert_equal 0, usd_account.balance
+    assert_equal Money.new(10_000, 'ARS'), ars_account.balance
+    assert_equal Money.new(0, 'USD'), usd_account.balance
   end
 
   test 'reject exchange same currency' do
