@@ -3,7 +3,7 @@ class ExchangeCurrenciesController < ApplicationController
 
   def new
     @currencies = current_user.account_currencies
-    @currency = params[:currency]
+    @currency_to_sell = params[:currency_to_sell]
   end
 
   def create
