@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/user' => 'users#show', as: :profile
   get '/user/new_savings_account' => 'users#new_savings_account'
   post '/user/create_savings_account' => 'users#create_savings_account'
+  post '/user/new_operation_on_account' => 'users#new_operation_on_account'
 
   resources :savings_accounts do
     member do

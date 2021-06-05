@@ -10,7 +10,7 @@ class User < ApplicationRecord
     raise RuntimeError unless target_currency != source_amount.currency
 
     account_for_currency(source_amount.currency)
-      .debit(source_amount.cents)
+      .debit(source_amount)
 
     account_for_currency(target_currency)
       .credit(exchange_ratio.convert(source_amount))

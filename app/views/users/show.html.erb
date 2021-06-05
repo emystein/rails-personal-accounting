@@ -1,3 +1,19 @@
-<%= render 'users/savings_accounts' %>
+<div class="container fixed-width-sm">
+  <%= render 'users/savings_accounts' %>
 
-<%= link_to 'Exchange Currency', new_exchange_currency_url, class: 'btn btn-primary' %>
+  <h2>Operations</h2>
+
+  <%= form_with(url: '/user/new_operation_on_account', class: 'row row-cols-sm-auto g-3') do |form| %>
+    <div class="col-12">
+      <%= select :operate_with, :currency, @currencies, {}, { class: 'form-select' } %>
+    </div>
+    <div class="col-12">
+      <button name="transaction_name" value="deposit" type="submit" class="btn btn-info">Deposit</button>
+    </div>
+    <div class="col-12">
+      <button name="transaction_name" value="withdraw" type="submit" class="btn btn-info mb-3">Withdraw</button>
+    </div>
+  <% end %>
+
+  <%= link_to 'Exchange Currency', new_exchange_currency_url, class: 'btn btn-primary' %>
+</div>

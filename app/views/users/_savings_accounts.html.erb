@@ -1,6 +1,6 @@
 <h1>Savings Accounts</h1>
 
-<table class="table table-striped width-md">
+<table class="table table-striped">
   <thead class="thead-dark">
   <tr>
     <th scope="col">Currency</th>
@@ -15,8 +15,6 @@
       <td scope="row" class="align-middle"><%= savings_account.currency %></td>
       <td scope="row" class="align-middle"><%= savings_account.balance %></td>
       <td scope="row" class="align-middle">
-        <%= link_to 'Deposit', new_deposit_savings_account_url(savings_account), class: 'btn btn-primary' %>
-        <%= link_to 'Withdraw', new_withdrawal_savings_account_url(savings_account), class: 'btn btn-primary' %>
         <%= link_to 'History', savings_account, class: 'btn btn-primary' %>
       </td>
     </tr>

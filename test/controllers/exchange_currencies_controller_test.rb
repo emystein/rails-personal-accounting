@@ -13,7 +13,7 @@ class ExchangeCurrenciesControllerTest < ActionDispatch::IntegrationTest
 
   test 'exchange currencies' do
     usd_account = @user.account_for_currency('USD')
-    usd_account.credit(100)
+    usd_account.credit(Money.new(100, 'USD'))
 
     ars_account = @user.account_for_currency('ARS')
 
