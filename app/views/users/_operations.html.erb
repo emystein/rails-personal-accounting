@@ -1,16 +1,12 @@
 <h1>Operations</h1>
 
-<%= form_with(url: '/user/new_operation_on_account', class: 'row row-cols-sm-auto g-3') do |form| %>
-  <div class="col">
+<%= form_with(url: '/user/new_operation_on_account', class: 'row') do |form| %>
+  <div class="col-md-auto">
     <%= select :operate_with, :currency, @currencies, {}, { class: 'form-select' } %>
   </div>
-  <div class="col">
-    <button name="transaction" value="deposit" type="submit" class="btn btn-info">Deposit</button>
-  </div>
-  <div class="col">
-    <button name="transaction" value="withdrawal" type="submit" class="btn btn-info mb-3">Withdraw</button>
-  </div>
-  <div class="col">
-    <button name="transaction" value="currency_sale" type="submit" class="btn btn-info mb-3">Sell</button>
+  <div class="col text-end">
+    <button name="transaction" value="deposit" type="submit" class="btn btn-primary">Deposit</button>
+    <button name="transaction" value="withdrawal" type="submit" class="btn btn-primary">Withdraw</button>
+    <button name="transaction" value="currency_sale" type="submit" class="btn btn-primary">Sell</button>
   </div>
 <% end %>
