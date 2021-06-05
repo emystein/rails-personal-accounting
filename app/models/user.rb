@@ -6,11 +6,11 @@ class User < ApplicationRecord
 
   has_many :savings_accounts
 
-  def exchange_currency(source_currency, source_amount, target_currency, exchange_ratio)
-    raise RuntimeError unless target_currency != source_currency
+  def exchange_currency(source_amount, target_currency, exchange_ratio)
+    raise RuntimeError unless target_currency != source_amount.currency
 
-    account_for_currency(source_currency)
-      .debit(source_amount)
+    account_for_currency(source_amount.currency)
+      .debit(source_amount.cents)
 
     account_for_currency(target_currency)
       .credit(exchange_ratio.convert(source_amount))
@@ -20,7 +20,7 @@ class User < ApplicationRecord
     savings_accounts.find { |a| a.currency == currency }
   end
 
-  def account_currencies()
+  def account_currencies
     savings_accounts.map(&:currency)
   end
 end

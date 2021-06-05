@@ -9,8 +9,7 @@ class ExchangeCurrenciesController < ApplicationController
     source_currency = params[:source_currency]
     target_currency = params[:destination_currency]
 
-    current_user.exchange_currency(source_currency,
-                                   params[:source_amount],
+    current_user.exchange_currency(Money.new(params[:source_amount], source_currency),
                                    target_currency,
                                    ExchangeRate.new(source_currency, target_currency, params[:exchange_rate]))
     redirect_to :profile
