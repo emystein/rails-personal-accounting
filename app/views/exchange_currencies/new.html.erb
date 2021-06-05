@@ -2,7 +2,7 @@
   <h2>Exchange Currency:</h2>
 
   <%= bootstrap_form_with(url: exchange_currencies_url, method: :post) do |form| %>
-    <%= form.select :source_currency, @currencies, {}, { class: 'form-select' } %>
+    <%= form.select :source_currency, @currencies, { selected: @currency }, { class: 'form-select' } %>
     <%= form.number_field :source_amount %>
     <%= form.select :destination_currency, @currencies, {}, { class: 'form-select' } %>
     <%= form.number_field :exchange_rate, class: 'mb-3' %>
