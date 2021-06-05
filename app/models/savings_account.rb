@@ -8,22 +8,28 @@ class SavingsAccount < ApplicationRecord
     Money.new(money_transactions.sum(&:amount), currency)
   end
 
-  def credit(amount)
-    amount = Money.new(amount, currency) unless amount.is_a?(Money)
+  def credit(money)
+    check_transaction_allows(money)
 
-    raise RuntimeError unless amount.positive?
-
-    money_transactions.new(amount: amount.cents)
-
-    save
+    add_money_transaction(money)
   end
 
-  def debit(amount)
-    amount = Money.new(amount, currency) unless amount.is_a?(Money)
+  def debit(money)
+    check_transaction_allows(money)
 
-    raise RuntimeError unless amount.positive? && amount <= balance
+    raise RuntimeError unless money <= balance
 
-    money_transactions.new(amount: -amount.cents)
+    add_money_transaction(-money)
+  end
+
+  private
+
+  def check_transaction_allows(money)
+    raise RuntimeError unless money.currency == currency && money.positive?
+  end
+
+  def add_money_transaction(money)
+    money_transactions.new(amount: money.cents)
 
     save
   end

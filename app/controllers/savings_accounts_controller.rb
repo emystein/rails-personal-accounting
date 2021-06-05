@@ -1,3 +1,5 @@
+require 'money'
+
 class SavingsAccountsController < ApplicationController
   before_action :set_savings_account, only: %i[ show edit update destroy deposit withdraw]
 
@@ -60,16 +62,20 @@ class SavingsAccountsController < ApplicationController
   end
 
   def deposit
-    @savings_account.credit(params[:amount])
+    @savings_account.credit(money_of(params[:amount]))
     redirect_to :profile
   end
 
   def withdraw
-    @savings_account.debit(params[:amount])
+    @savings_account.debit(money_of(params[:amount]))
     redirect_to :profile
   end
 
   private
+
+  def money_of(amount)
+    Money.new(amount, @savings_account.currency)
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_savings_account

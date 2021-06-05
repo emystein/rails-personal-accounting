@@ -46,4 +46,21 @@ class SavingsAccountTest < ActiveSupport::TestCase
       account.debit(Money.new(10, 'ARS'))
     end
   end
+
+  test 'reject credit different currency' do
+    account = SavingsAccount.new(currency: 'ARS')
+
+    assert_raises RuntimeError do
+      account.credit(Money.new(10, 'USD'))
+    end
+  end
+
+  test 'reject debit different currency' do
+    account = SavingsAccount.new(currency: 'ARS')
+    account.credit(Money.new(20, 'ARS'))
+
+    assert_raises RuntimeError do
+      account.debit(Money.new(10, 'USD'))
+    end
+  end
 end

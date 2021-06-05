@@ -49,7 +49,7 @@ class SavingsAccountsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'withdraw' do
-    @savings_account.credit(20)
+    @savings_account.credit(Money.new(20, 'ARS'))
 
     post withdraw_savings_account_url(@savings_account), params: { savings_account: { currency: @savings_account.currency, user_id: @savings_account.user_id },
                                                                    amount: 15,
