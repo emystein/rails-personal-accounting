@@ -8,12 +8,12 @@ class ExchangeCurrenciesController < ApplicationController
   end
 
   def create
-    source_currency = params[:source_currency]
-    target_currency = params[:destination_currency]
+    currency_to_sell = params[:currency_to_sell]
+    currency_to_buy = params[:currency_to_buy]
 
-    current_user.exchange_currency(Money.new(params[:source_amount], source_currency),
-                                   target_currency,
-                                   ExchangeRate.new(source_currency, target_currency, params[:exchange_rate]))
+    current_user.exchange_currency(Money.new(params[:amount_to_sell], currency_to_sell),
+                                   currency_to_buy,
+                                   ExchangeRate.new(currency_to_sell, currency_to_buy, params[:exchange_rate]))
     redirect_to :profile
   end
 end
