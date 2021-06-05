@@ -4,6 +4,7 @@ class ExchangeCurrenciesController < ApplicationController
   def new
     @currencies = current_user.account_currencies
     @currency_to_sell = params[:currency_to_sell]
+    @first_currency_to_buy = @currencies.find { |c| c != @currency_to_sell }
   end
 
   def create
