@@ -11,7 +11,7 @@ class SavingsAccount < ApplicationRecord
   def credit(money)
     check_transaction_allows(money)
 
-    add_money_transaction(money)
+    add_transaction(money)
   end
 
   def debit(money)
@@ -19,7 +19,7 @@ class SavingsAccount < ApplicationRecord
 
     raise RuntimeError unless money <= balance
 
-    add_money_transaction(-money)
+    add_transaction(-money)
   end
 
   private
@@ -28,7 +28,7 @@ class SavingsAccount < ApplicationRecord
     raise RuntimeError unless money.currency == currency && money.positive?
   end
 
-  def add_money_transaction(money)
+  def add_transaction(money)
     money_transactions.new(amount: money.cents)
 
     save
