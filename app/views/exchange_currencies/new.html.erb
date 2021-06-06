@@ -1,5 +1,5 @@
 <div class="container form-sm">
-  <h2>Exchange Currency:</h2>
+  <h1>Exchange Currency:</h1>
 
   <%= bootstrap_form_with(url: exchange_currencies_url, method: :post) do |form| %>
     <%= form.select :currency_to_sell, @currencies, { selected: @currency_to_sell }, { class: 'form-select' } %>
