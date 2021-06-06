@@ -67,3 +67,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "money", "~> 6.16"
 
 gem "rails_db", "~> 2.3"
+
+gem "money-rails", "~> 1.7"

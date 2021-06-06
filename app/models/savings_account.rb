@@ -5,7 +5,7 @@ class SavingsAccount < ApplicationRecord
   has_many :money_transactions
 
   def balance
-    Money.new(money_transactions.sum(&:amount), currency)
+    Money.from_amount(money_transactions.sum(&:amount), currency)
   end
 
   def credit(money)
@@ -29,7 +29,7 @@ class SavingsAccount < ApplicationRecord
   end
 
   def add_transaction(money)
-    money_transactions.new(amount: money.cents)
+    money_transactions.new(amount: money.amount)
 
     save
   end

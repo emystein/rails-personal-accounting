@@ -45,16 +45,16 @@ class SavingsAccountsControllerTest < ActionDispatch::IntegrationTest
                                                                   amount: 10,
                                                                   description: 'a deposit' }
 
-    assert @savings_account.balance == Money.new(10, 'ARS')
+    assert @savings_account.balance == Money.from_amount(10, 'ARS')
   end
 
   test 'withdraw' do
-    @savings_account.credit(Money.new(20, 'ARS'))
+    @savings_account.credit(Money.from_amount(20, 'ARS'))
 
     post withdraw_savings_account_url(@savings_account), params: { savings_account: { currency: @savings_account.currency, user_id: @savings_account.user_id },
                                                                    amount: 15,
                                                                    description: 'a withdrawal' }
 
-    assert @savings_account.balance == Money.new(5, 'ARS')
+    assert @savings_account.balance == Money.from_amount(5, 'ARS')
   end
 end

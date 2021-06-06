@@ -13,7 +13,7 @@
   <% @savings_accounts.each do |savings_account| %>
     <tr>
       <td scope="row" class="align-middle"><%= savings_account.currency %></td>
-      <td scope="row" class="align-middle"><%= savings_account.balance.cents %></td>
+      <td scope="row" class="align-middle"><%= savings_account.balance.amount %></td>
       <td scope="row" class="align-middle text-end">
         <%= link_to 'History', savings_account, class: 'btn btn-secondary' %>
       </td>

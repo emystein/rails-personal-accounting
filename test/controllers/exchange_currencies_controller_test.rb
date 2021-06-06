@@ -13,18 +13,18 @@ class ExchangeCurrenciesControllerTest < ActionDispatch::IntegrationTest
 
   test 'exchange currencies' do
     usd_account = @user.account_for_currency('USD')
-    usd_account.credit(Money.new(100, 'USD'))
+    usd_account.credit(Money.from_amount(100, 'USD'))
 
     ars_account = @user.account_for_currency('ARS')
 
     post '/exchange_currencies', params: {
-      source_currency: 'USD',
-      source_amount: 100,
-      destination_currency: 'ARS',
+      currency_to_sell: 'USD',
+      amount_to_sell: 100,
+      currency_to_buy: 'ARS',
       exchange_rate: 100
     }
 
-    assert_equal Money.new(10_000, 'ARS'), ars_account.balance
-    assert_equal Money.new(0, 'USD'), usd_account.balance
+    assert_equal Money.from_amount(10_000, 'ARS'), ars_account.balance
+    assert_equal Money.from_amount(0, 'USD'), usd_account.balance
   end
 end

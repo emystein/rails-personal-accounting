@@ -74,7 +74,7 @@ class SavingsAccountsController < ApplicationController
   private
 
   def money_of(amount)
-    Money.new(amount, @savings_account.currency)
+    Money.from_amount(amount.to_d, @savings_account.currency)
   end
 
   # Use callbacks to share common setup or constraints between actions.
