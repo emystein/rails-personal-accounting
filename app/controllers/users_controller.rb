@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     when 'withdrawal'
       redirect_to new_withdrawal_savings_account_url(account)
     when 'currency_sale'
-      redirect_to new_exchange_currency_url(currency_to_sell: currency)
+      redirect_to new_currency_exchange_url(currency_to_sell: currency)
     end
   end
 

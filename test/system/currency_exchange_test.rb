@@ -1,6 +1,6 @@
 require 'application_system_test_case'
 
-class ExchangeCurrenciesTest < ApplicationSystemTestCase
+class CurrencyExchangeTest < ApplicationSystemTestCase
   include Devise::Test::IntegrationHelpers
 
   setup do
@@ -13,7 +13,7 @@ class ExchangeCurrenciesTest < ApplicationSystemTestCase
   test 'exchange USD to ARS' do
     @usd_account.credit(Money.from_amount(100, 'USD'))
 
-    visit new_exchange_currency_url
+    visit new_currency_exchange_url
 
     select 'USD', from: 'currency_to_sell'
     fill_in 'Amount to sell', with: 100

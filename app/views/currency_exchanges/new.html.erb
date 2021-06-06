@@ -1,7 +1,7 @@
 <div class="container form-sm">
   <h1>Exchange Currency:</h1>
 
-  <%= bootstrap_form_with(url: exchange_currencies_url, method: :post) do |form| %>
+  <%= bootstrap_form_with(url: currency_exchanges_url, method: :post) do |form| %>
     <%= form.select :currency_to_sell, @currencies, { selected: @currency_to_sell }, { class: 'form-select' } %>
     <%= form.number_field :amount_to_sell %>
     <%= form.select :currency_to_buy, @currencies, { selected: @first_currency_to_buy }, { class: 'form-select' } %>

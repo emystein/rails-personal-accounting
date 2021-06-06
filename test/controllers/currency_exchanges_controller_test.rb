@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ExchangeCurrenciesControllerTest < ActionDispatch::IntegrationTest
+class CurrencyExchangesControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
@@ -17,7 +17,7 @@ class ExchangeCurrenciesControllerTest < ActionDispatch::IntegrationTest
 
     ars_account = @user.account_for_currency('ARS')
 
-    post '/exchange_currencies', params: {
+    post currency_exchanges_url, params: {
       currency_to_sell: 'USD',
       amount_to_sell: 100,
       currency_to_buy: 'ARS',

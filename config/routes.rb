@@ -19,5 +19,5 @@ Rails.application.routes.draw do
 
   resources :money_transactions, except: %i[edit update destroy]
 
-  resources :exchange_currencies
+  resources :currency_exchanges
 end

@@ -1,4 +1,4 @@
-class ExchangeCurrenciesController < ApplicationController
+class CurrencyExchangesController < ApplicationController
   before_action :authenticate_user!
 
   def new
