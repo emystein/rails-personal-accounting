@@ -12,6 +12,8 @@ user1_eur_account:
   user: one
   currency: EUR
 
-two:
+
+user2_ars_account:
   user: two
-  currency: MyString
+  currency: ARS
+

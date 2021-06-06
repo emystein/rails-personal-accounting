@@ -1,7 +1,13 @@
 require "application_system_test_case"
 
 class SavingsAccountsTest < ApplicationSystemTestCase
+  include Devise::Test::IntegrationHelpers
+
   setup do
+    @user = users(:one)
+
+    sign_in @user
+
     @savings_account = savings_accounts(:user1_ars_account)
   end
 

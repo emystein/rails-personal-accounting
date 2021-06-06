@@ -1,11 +1,12 @@
 require 'money'
 
 class SavingsAccountsController < ApplicationController
-  before_action :set_savings_account, only: %i[ show edit update destroy deposit withdraw]
+  before_action :authenticate_user!
+  before_action :set_savings_account, only: %i[show edit update destroy deposit withdraw]
 
   # GET /savings_accounts or /savings_accounts.json
   def index
-    @savings_accounts = SavingsAccount.all
+    @savings_accounts = current_user.savings_accounts
   end
 
   # GET /savings_accounts/1 or /savings_accounts/1.json
@@ -79,7 +80,9 @@ class SavingsAccountsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_savings_account
-    @savings_account = SavingsAccount.find(params[:id])
+    @savings_account = SavingsAccount.find_by(id: params[:id], user: current_user)
+
+    raise ActionController::RoutingError, 'Not Found' if @savings_account.nil?
   end
 
   # Only allow a list of trusted parameters through.
