@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_192012) do
+ActiveRecord::Schema.define(version: 2021_05_17_121549) do
 
   create_table "money_transactions", force: :cascade do |t|
     t.integer "savings_account_id", null: false
-    t.integer "amount"
+    t.decimal "amount"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
