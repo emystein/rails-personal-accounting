@@ -2,7 +2,7 @@ require 'money'
 
 class SavingsAccountsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_savings_account, only: %i[show edit update destroy deposit withdraw]
+  before_action :set_savings_account, only: %i[show edit update destroy deposit withdraw new_currency_sale]
 
   # GET /savings_accounts or /savings_accounts.json
   def index
@@ -70,6 +70,10 @@ class SavingsAccountsController < ApplicationController
   def withdraw
     @savings_account.debit(money_of(params[:amount]))
     redirect_to :profile
+  end
+
+  def new_currency_sale
+    redirect_to new_currency_exchange_url(currency_to_sell: @savings_account.currency)
   end
 
   private

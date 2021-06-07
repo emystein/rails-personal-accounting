@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :savings_accounts do
     member do
-      get :new_deposit, :new_withdrawal
+      get :new_deposit, :new_withdrawal, :new_currency_sale
       post :deposit, :withdraw
     end
   end
