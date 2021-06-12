@@ -11,9 +11,8 @@ class User < ApplicationRecord
   def exchange_currency(source_amount, destination_currency, exchange_rate)
     Money.add_rate(source_amount.currency, destination_currency, exchange_rate)
 
-    destination_account = account_for_currency(destination_currency)
-
-    account_for_currency(source_amount.currency).sell_money_to_account(source_amount, destination_account)
+    account_for_currency(source_amount.currency)
+      .sell_money_to_account(source_amount, account_for_currency(destination_currency))
   end
 
   def account_for_currency(currency)
