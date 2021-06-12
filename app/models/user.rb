@@ -8,11 +8,11 @@ class User < ApplicationRecord
 
   has_many :savings_accounts
 
-  def exchange_currency(source_amount, destination_currency, exchange_rate)
-    Money.add_rate(source_amount.currency, destination_currency, exchange_rate)
+  def exchange_currency(amount_to_sell, currency_to_buy, exchange_rate)
+    Money.add_rate(amount_to_sell.currency, currency_to_buy, exchange_rate)
 
-    account_for_currency(source_amount.currency)
-      .sell_money_to_account(source_amount, account_for_currency(destination_currency))
+    account_for_currency(amount_to_sell.currency)
+      .sell_money_to_account(amount_to_sell, account_for_currency(currency_to_buy))
   end
 
   def account_for_currency(currency)
