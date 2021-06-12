@@ -11,8 +11,6 @@ class User < ApplicationRecord
   def exchange_currency(source_amount, destination_currency, exchange_rate)
     source_currency = source_amount.currency
 
-    raise RuntimeError unless destination_currency != source_currency
-
     Money.add_rate(source_currency, destination_currency, exchange_rate)
 
     destination_account = account_for_currency(destination_currency)

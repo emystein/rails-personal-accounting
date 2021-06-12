@@ -78,4 +78,12 @@ class SavingsAccountTest < ActiveSupport::TestCase
       @usd_account.sell_money_to_account(@ars10, @ars_account)
     end
   end
+
+  test 'reject sell money to account with same currency' do
+    @usd_account.credit(@dollars10)
+
+    assert_raises RuntimeError do
+      @usd_account.sell_money_to_account(@dollars10, @usd_account)
+    end
+  end
 end
