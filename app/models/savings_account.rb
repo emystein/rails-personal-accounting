@@ -22,6 +22,16 @@ class SavingsAccount < ApplicationRecord
     add_transaction(-money)
   end
 
+  def sell_money_to_account(money_to_sell, destination_account)
+    debit(money_to_sell)
+
+    destination_account.credit_exchange(money_to_sell)
+  end
+
+  def credit_exchange(money_to_sell)
+    credit(money_to_sell.exchange_to(currency))
+  end
+
   private
 
   def check_transaction_allows(money)

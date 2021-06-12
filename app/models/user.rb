@@ -13,13 +13,11 @@ class User < ApplicationRecord
 
     raise RuntimeError unless destination_currency != source_currency
 
-    account_for_currency(source_currency)
-      .debit(source_amount)
-
     Money.add_rate(source_currency, destination_currency, exchange_rate)
 
-    account_for_currency(destination_currency)
-      .credit(source_amount.exchange_to(destination_currency))
+    destination_account = account_for_currency(destination_currency)
+
+    account_for_currency(source_currency).sell_money_to_account(source_amount, destination_account)
   end
 
   def account_for_currency(currency)
