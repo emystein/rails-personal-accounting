@@ -8,14 +8,18 @@ class User < ApplicationRecord
 
   has_many :savings_accounts
 
-  def exchange_currency(source_amount, target_currency, exchange_ratio)
-    raise RuntimeError unless target_currency != source_amount.currency
+  def exchange_currency(source_amount, destination_currency, exchange_rate)
+    source_currency = source_amount.currency
 
-    account_for_currency(source_amount.currency)
+    raise RuntimeError unless destination_currency != source_currency
+
+    account_for_currency(source_currency)
       .debit(source_amount)
 
-    account_for_currency(target_currency)
-      .credit(exchange_ratio.convert(source_amount))
+    Money.add_rate(source_currency, destination_currency, exchange_rate)
+
+    account_for_currency(destination_currency)
+      .credit(source_amount.exchange_to(destination_currency))
   end
 
   def account_for_currency(currency)
