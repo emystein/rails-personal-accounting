@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  after_create :create_default_accounts
+
   has_many :savings_accounts
 
   def exchange_currency(source_amount, target_currency, exchange_ratio)
@@ -22,5 +24,10 @@ class User < ApplicationRecord
 
   def account_currencies
     savings_accounts.map(&:currency)
+  end
+
+  def create_default_accounts
+    savings_accounts.create(currency: 'ARS')
+    savings_accounts.create(currency: 'USD')
   end
 end
