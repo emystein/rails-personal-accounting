@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @savings_accounts = current_user.savings_accounts
-    @currencies = current_user.account_currencies
+    @currencies = current_user.currencies
     @operations = {
       new_deposit: 'Deposit',
       new_withdrawal: 'Withdraw',
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def new_operation_on_account
     currency = params[:operate_with][:currency]
-    account = current_user.account_for_currency(currency)
+    account = current_user.account_in(currency)
     redirect_to "/savings_accounts/#{account.id}/#{params[:operation]}"
   end
 

@@ -8,10 +8,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     user = User.find_by(email: 'user@example.org')
 
-    ars_account = user.account_for_currency('ARS')
+    ars_account = user.account_in('ARS')
     assert_not_nil ars_account
 
-    usd_account = user.account_for_currency('USD')
+    usd_account = user.account_in('USD')
     assert_not_nil usd_account
   end
 end

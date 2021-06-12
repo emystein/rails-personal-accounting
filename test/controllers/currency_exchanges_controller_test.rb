@@ -12,10 +12,10 @@ class CurrencyExchangesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'exchange currencies' do
-    usd_account = @user.account_for_currency('USD')
+    usd_account = @user.account_in('USD')
     usd_account.credit(Money.from_amount(100, 'USD'))
 
-    ars_account = @user.account_for_currency('ARS')
+    ars_account = @user.account_in('ARS')
 
     post currency_exchanges_url, params: {
       currency_to_sell: 'USD',

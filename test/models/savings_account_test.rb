@@ -65,7 +65,7 @@ class SavingsAccountTest < ActiveSupport::TestCase
 
     Money.add_rate('USD', 'ARS', 100)
 
-    @usd_account.sell_money_to_account(@dollars10, @ars_account)
+    @usd_account.exchange_money(@dollars10, @ars_account)
 
     assert @usd_account.balance.zero?
     assert @ars_account.balance.amount == 1000
@@ -75,7 +75,7 @@ class SavingsAccountTest < ActiveSupport::TestCase
     @usd_account.credit(@dollars10)
 
     assert_raises RuntimeError do
-      @usd_account.sell_money_to_account(@ars10, @ars_account)
+      @usd_account.exchange_money(@ars10, @ars_account)
     end
   end
 
@@ -83,7 +83,7 @@ class SavingsAccountTest < ActiveSupport::TestCase
     @usd_account.credit(@dollars10)
 
     assert_raises RuntimeError do
-      @usd_account.sell_money_to_account(@dollars10, @usd_account)
+      @usd_account.exchange_money(@dollars10, @usd_account)
     end
   end
 end

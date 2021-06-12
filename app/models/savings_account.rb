@@ -22,16 +22,16 @@ class SavingsAccount < ApplicationRecord
     add_transaction(-money)
   end
 
-  def sell_money_to_account(money_to_sell, destination_account)
-    raise RuntimeError unless destination_account.currency != currency
+  def exchange_money(money, to_account)
+    raise RuntimeError unless to_account.currency != currency
 
-    debit(money_to_sell)
+    debit(money)
 
-    destination_account.credit_exchange(money_to_sell)
+    to_account.credit_exchange(money)
   end
 
-  def credit_exchange(money_to_sell)
-    credit(money_to_sell.exchange_to(currency))
+  def credit_exchange(money)
+    credit(money.exchange_to(currency))
   end
 
   private
