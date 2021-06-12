@@ -24,7 +24,6 @@ class User < ApplicationRecord
   end
 
   def create_default_accounts
-    savings_accounts.create(currency: 'ARS')
-    savings_accounts.create(currency: 'USD')
+    Bank.default_currencies.map { |c| savings_accounts.create(currency: c) }
   end
 end
