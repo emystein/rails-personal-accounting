@@ -48,15 +48,15 @@ class SavingsAccountTest < ActiveSupport::TestCase
 
   test 'reject credit different currency' do
     assert_raises RuntimeError do
-      @ars_account.credit(Money.from_amount(10, 'USD'))
+      @ars_account.credit(@dollars10)
     end
   end
 
   test 'reject debit different currency' do
-    @ars_account.credit(Money.from_amount(20, 'ARS'))
+    @ars_account.credit(@ars10)
 
     assert_raises RuntimeError do
-      @ars_account.debit(Money.from_amount(10, 'USD'))
+      @ars_account.debit(@dollars10)
     end
   end
 
@@ -67,8 +67,8 @@ class SavingsAccountTest < ActiveSupport::TestCase
 
     @usd_account.sell_money_to_account(@dollars10, @ars_account)
 
-    assert @usd_account.balance == Money.from_amount(0, 'USD')
-    assert @ars_account.balance == Money.from_amount(1000, 'ARS')
+    assert @usd_account.balance.zero?
+    assert @ars_account.balance.amount == 1000
   end
 
   test 'reject sell money with different currency than source account' do
