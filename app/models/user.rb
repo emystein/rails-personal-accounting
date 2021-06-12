@@ -9,9 +9,11 @@ class User < ApplicationRecord
   after_create :create_default_accounts
 
   def exchange_currency(money, to_currency, exchange_rate)
-    Money.add_rate(money.currency, to_currency, exchange_rate)
+    from_currency = money.currency
 
-    from_account = account_in(money.currency)
+    Money.add_rate(from_currency, to_currency, exchange_rate)
+
+    from_account = account_in(from_currency)
     to_account = account_in(to_currency)
 
     from_account.exchange_money(money, to_account)
