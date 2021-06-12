@@ -5,7 +5,10 @@ class SavingsAccountTest < ActiveSupport::TestCase
   setup do
     @ars_account = SavingsAccount.new(currency: 'ARS')
     @usd_account = SavingsAccount.new(currency: 'USD')
-    @dollars_10 = Money.from_amount(10, 'USD')
+
+    @ars5 = Money.from_amount(5, 'ARS')
+    @ars10 = Money.from_amount(10, 'ARS')
+    @dollars10 = Money.from_amount(10, 'USD')
   end
 
   test 'initial balance should be 0' do
@@ -13,9 +16,9 @@ class SavingsAccountTest < ActiveSupport::TestCase
   end
 
   test 'credit 10 should increase balance by 10' do
-    @ars_account.credit(Money.from_amount(10, 'ARS'))
+    @ars_account.credit(@ars10)
 
-    assert @ars_account.balance == Money.from_amount(10, 'ARS')
+    assert @ars_account.balance == @ars10
   end
 
   test 'credit negative amount should throw an error' do
@@ -24,11 +27,11 @@ class SavingsAccountTest < ActiveSupport::TestCase
     end
   end
 
-  test 'credit 20 debit 15 should set balance to 5' do
-    @ars_account.credit(Money.from_amount(20, 'ARS'))
-    @ars_account.debit(Money.from_amount(15, 'ARS'))
+  test 'credit 10 debit 5 should set balance to 5' do
+    @ars_account.credit(@ars10)
+    @ars_account.debit(@ars5)
 
-    assert @ars_account.balance == Money.from_amount(5, 'ARS')
+    assert @ars_account.balance == @ars5
   end
 
   test 'debit negative amount should throw an error' do
@@ -39,7 +42,7 @@ class SavingsAccountTest < ActiveSupport::TestCase
 
   test 'debit below balance should throw an error' do
     assert_raises RuntimeError do
-      @ars_account.debit(Money.from_amount(10, 'ARS'))
+      @ars_account.debit(@ars10)
     end
   end
 
@@ -58,23 +61,21 @@ class SavingsAccountTest < ActiveSupport::TestCase
   end
 
   test 'sell 10 USD to ARS account' do
-    @usd_account.credit(@dollars_10)
+    @usd_account.credit(@dollars10)
 
     Money.add_rate('USD', 'ARS', 100)
 
-    @usd_account.sell_money_to_account(@dollars_10, @ars_account)
+    @usd_account.sell_money_to_account(@dollars10, @ars_account)
 
     assert @usd_account.balance == Money.from_amount(0, 'USD')
     assert @ars_account.balance == Money.from_amount(1000, 'ARS')
   end
 
   test 'reject sell money with different currency than source account' do
-    @usd_account.credit(@dollars_10)
-
-    ars_10 = Money.from_amount(10, 'ARS')
+    @usd_account.credit(@dollars10)
 
     assert_raises RuntimeError do
-      @usd_account.sell_money_to_account(ars_10, @ars_account)
+      @usd_account.sell_money_to_account(@ars10, @ars_account)
     end
   end
 end
