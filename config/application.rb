@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module RailsPersonalBanking
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.1
+    config.load_defaults 7.0
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -18,5 +18,7 @@ module RailsPersonalBanking
     #
     config.time_zone = "America/Buenos_Aires"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.active_record.verify_foreign_keys_for_fixtures = false
   end
 end

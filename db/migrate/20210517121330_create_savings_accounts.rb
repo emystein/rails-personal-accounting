@@ -1,4 +1,4 @@
-class CreateSavingsAccounts < ActiveRecord::Migration[6.1]
+class CreateSavingsAccounts < ActiveRecord::Migration[7.0]
   def change
     create_table :savings_accounts do |t|
       t.references :user, null: false, foreign_key: true

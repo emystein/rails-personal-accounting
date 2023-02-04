@@ -10,22 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_121549) do
-
+ActiveRecord::Schema[7.0].define(version: 2021_05_17_121549) do
   create_table "money_transactions", force: :cascade do |t|
     t.integer "savings_account_id", null: false
     t.decimal "amount"
     t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["savings_account_id"], name: "index_money_transactions_on_savings_account_id"
   end
 
   create_table "savings_accounts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "currency"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_savings_accounts_on_user_id"
   end
 
@@ -35,8 +34,8 @@ ActiveRecord::Schema.define(version: 2021_05_17_121549) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name"
     t.string "surname"
     t.index ["email"], name: "index_users_on_email", unique: true
