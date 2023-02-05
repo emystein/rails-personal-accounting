@@ -18,7 +18,7 @@ class UsersTest < ApplicationSystemTestCase
   test 'from user profile navigate to deposit' do
     visit profile_url
 
-    click_on 'Deposit'
+    click_link 'Deposit', :match => :first
 
     assert_selector 'h1', text: 'Deposit'
     assert_text 'Amount'
@@ -28,7 +28,7 @@ class UsersTest < ApplicationSystemTestCase
   test 'from user profile navigate to withdraw' do
     visit profile_url
 
-    click_on 'Withdraw'
+    click_link 'Withdraw', :match => :first
 
     assert_selector 'h1', text: 'Withdraw'
     assert_text 'Amount'
@@ -38,7 +38,7 @@ class UsersTest < ApplicationSystemTestCase
   test 'from user profile navigate to sell' do
     visit profile_url
 
-    click_on 'Sell'
+    click_link 'Sell', :match => :first
 
     assert_selector 'h1', text: 'Exchange Currency'
     assert_select 'Currency to sell'
