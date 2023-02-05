@@ -15,6 +15,8 @@ gem "sqlite3", "~> 1.4"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
+gem "sassc-rails"
+
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
@@ -41,6 +43,7 @@ gem 'devise', '~> 4.8'
 
 gem 'bootstrap'
 gem 'bootstrap_form'
+
 gem 'kaminari'
 
 gem 'rails_admin', '~> 3.0'
@@ -69,12 +72,8 @@ group :test do
   gem 'webdrivers'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
 gem "money", "~> 6.16"
 
 gem "rails_db", "~> 2.3"
 
 gem "money-rails", "~> 1.7"
-gem "sassc-rails"
