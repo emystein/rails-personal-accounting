@@ -1,21 +1,24 @@
 <h1>Savings Accounts</h1>
 
-<table class="table table-striped">
+<table class="table table-striped width-md">
   <thead class="thead-dark">
   <tr>
     <th scope="col">Currency</th>
     <th scope="col">Balance</th>
-    <th scope="col"></th>
+    <th scope="col">Actions</th>
   </tr>
   </thead>
 
   <tbody>
-  <% @savings_accounts.each do |savings_account| %>
+  <% @savings_accounts.each do |account| %>
     <tr>
-      <td scope="row" class="align-middle"><%= savings_account.currency %></td>
-      <td scope="row" class="align-middle"><%= savings_account.balance.amount %></td>
-      <td scope="row" class="align-middle text-end">
-        <%= link_to 'History', savings_account, class: 'btn btn-secondary' %>
+      <td class="align-middle"><%= account.currency %></td>
+      <td class="align-middle"><%= account.balance.amount %></td>
+      <td class="align-middle">
+        <%= link_to 'History', account, class: 'btn btn-primary' %>
+        <%= link_to 'Deposit', new_deposit_savings_account_path(account), class: 'btn btn-primary' %>
+        <%= link_to 'Withdraw', new_withdrawal_savings_account_path(account), class: 'btn btn-primary' %>
+        <%= link_to 'Sell', new_currency_exchange_path(currency_to_sell: account.currency), class: 'btn btn-primary' %>
       </td>
     </tr>
   <% end %>
