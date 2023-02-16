@@ -1,3 +1,10 @@
+# Introduction
+Application that allows registered users to track their money movements in different accounts.
+
+Every account is associated to a currency.
+
+The user can record credits and debits on his accounts as well as exchange money between them.
+
 # Development
 
 ## New development environment
